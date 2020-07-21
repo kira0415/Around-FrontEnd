@@ -32,3 +32,9 @@
       transform: rotate(360deg);
     }
 }
+
+.logout {
+  float: right;
+  padding-top: 13px;
+  padding-right: 15px;
+}

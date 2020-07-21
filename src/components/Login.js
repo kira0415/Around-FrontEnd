@@ -24,7 +24,7 @@ class NormalLoginForm extends Component {
                   throw new Error(response.statusText);
             })
             .then(data => {
-                  console.log('===== ', data);
+                  this.props.handleLoginSucceed(data);
                   message.success('Login succeed!');
             })
             .catch(err => {
@@ -53,7 +53,7 @@ class NormalLoginForm extends Component {
               {getFieldDecorator('password', {
                 rules: [{ required: true, message: 'Please input your Password!' }],
               })(
-                <Input
+                <Input.Password
                   prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   type="password"
                   placeholder="Password"
