@@ -145,11 +145,11 @@ class Home extends Component {
         if (topic === TOPIC_AROUND) {
             this.loadNearbyPosts();
         } else {
-            this.loadFacesAroundTheWolrd();
+            this.loadFacesAroundTheWorld();
         }
     }
  
-    loadFacesAroundTheWolrd = () => {
+    loadFacesAroundTheWorld = () => {
         const token = localStorage.getItem(TOKEN_KEY);
         this.setState({ isLoadingPosts: true, error: '' });
         return fetch(`${API_ROOT}/cluster?term=face`, {
@@ -173,6 +173,14 @@ class Home extends Component {
                 this.setState({ isLoadingPosts: false , error: e.message });
             });
     }
+
+    loadPostsByTopic = (center, radius) => {
+        if (this.state.topic === TOPIC_AROUND) {
+            return this.loadNearbyPosts(center, radius);
+        } else {
+            return this.loadFacesAroundTheWorld();
+        }
+    } 
  
     render() {
         const operations = <CreatePostButton loadNearbyPosts={this.loadNearbyPosts}/>;
